@@ -44,6 +44,28 @@ function App() {
     console.log("body", body);
     console.log("title", title);
     console.log("categories", categories);
+    const bodyT = {
+      titulo: title,
+      resumen: resumen,
+      cuerpo: body,
+      autor: 0,
+      idioma: "es",
+      categorias: categories.split(","),
+    };
+    fetch(
+      "https://bsj1sh8bc7.execute-api.us-east-1.amazonaws.com/STG/v1/noticia",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyT),
+      }
+    ).then((r) => {
+      console.log("r");
+    });
+
     cleanData();
   };
   const cleanData = () => {
