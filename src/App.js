@@ -37,13 +37,9 @@ function App() {
     }
     return isOk;
   };
-  const save = (e) => {
-    console.log("AAA", e);
+  const save = () => {
     if (!validateForm()) return;
-    console.log("resumen", resumen);
-    console.log("body", body);
-    console.log("title", title);
-    console.log("categories", categories);
+
     const bodyT = {
       titulo: title,
       resumen: resumen,
@@ -62,9 +58,14 @@ function App() {
         },
         body: JSON.stringify(bodyT),
       }
-    ).then((r) => {
-      console.log("r");
-    });
+    )
+      .then((r) => {
+        console.log("r");
+        alert("La noticia fue guardada con exito");
+      })
+      .catch((e) => {
+        alert("Hubo un error al cargar la noticia, intente mas tarde");
+      });
 
     cleanData();
   };
